@@ -10,10 +10,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List cities = [
-    {'name': 'Paris', 'image': 'assets/images/paris.jpg'},
-    {'name': 'Lyon', 'image': 'assets/images/lyon.jpg'},
-    {'name': 'Nice', 'image': 'assets/images/nice.jpg'},
+    {'name': 'Paris', 'image': 'assets/images/paris.jpg', 'checked': 'false'},
+    {'name': 'Lyon', 'image': 'assets/images/lyon.jpg', 'checked': 'false'},
+    {'name': 'Nice', 'image': 'assets/images/nice.jpg', 'checked': 'false'},
   ];
+
+  void swutchChecked(city) {
+    int index = cities.indexOf(city);
+    setState(() {
+      cities[index]['checked'] = !cities[index]['checked'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,14 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             ...cities.map((city) {
-              return CityCard(name: city['name'], image: city['image']);
+              return CityCard(
+                name: city['name'],
+                image: city['image'],
+                checked: city['checked'],
+                updateChecked: () {
+                  swutchChecked(city);
+                },
+              );
             })
           ],
         ),

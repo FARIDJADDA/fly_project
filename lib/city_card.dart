@@ -4,8 +4,9 @@ class CityCard extends StatelessWidget {
   final String name;
   final String image;
   final bool checked;
+  final Function updateChecked;
 
-  CityCard({this.name, this.image, this.checked});
+  CityCard({this.name, this.image, this.checked, this.updateChecked});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CityCard extends StatelessWidget {
               fit: BoxFit.cover,
               image: AssetImage(image),
               child: InkWell(
-                onTap: () => {print('tap 2')},
+                onTap: updateChecked,
               ),
             ),
             Padding(
