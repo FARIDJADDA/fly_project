@@ -10,12 +10,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List cities = [
-    {'name': 'Paris', 'image': 'assets/images/paris.jpg', 'checked': 'false'},
-    {'name': 'Lyon', 'image': 'assets/images/lyon.jpg', 'checked': 'false'},
-    {'name': 'Nice', 'image': 'assets/images/nice.jpg', 'checked': 'false'},
+    {'name': 'Paris', 'image': 'assets/images/paris.jpg', 'checked': false},
+    {'name': 'Lyon', 'image': 'assets/images/lyon.jpg', 'checked': false},
+    {'name': 'Nice', 'image': 'assets/images/nice.jpg', 'checked': false},
+    {'name': 'Alger', 'image': 'assets/images/alger.jpg', 'checked': false},
+    // {'name': 'Phuket', 'image': 'assets/images/phuket.jpg', 'checked': false},
   ];
 
-  void swutchChecked(city) {
+  void switchChecked(city) {
     int index = cities.indexOf(city);
     setState(() {
       cities[index]['checked'] = !cities[index]['checked'];
@@ -41,7 +43,7 @@ class _HomeState extends State<Home> {
                 image: city['image'],
                 checked: city['checked'],
                 updateChecked: () {
-                  swutchChecked(city);
+                  switchChecked(city);
                 },
               );
             })

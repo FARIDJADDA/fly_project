@@ -34,7 +34,7 @@ class CityCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Icon(
-                        Icons.star_border,
+                        checked ? Icons.star : Icons.star_border,
                         size: 30,
                         color: Colors.white,
                       ),
