@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import 'views/home/home.dart';
 
 main(List<String> args) {
   runApp(LeFaTrip());
