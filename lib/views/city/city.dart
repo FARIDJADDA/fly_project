@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fly_project/models/trip.model.dart';
 import '../../models/activity.model.dart';
 import 'widgets/activity_card.dart';
 import '../../datas/data.dart' as data;
@@ -10,6 +11,8 @@ class City extends StatefulWidget {
 }
 
 class _CityState extends State<City> {
+  Trip myTrip = Trip(activities: [], city: 'Paris');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +24,41 @@ class _CityState extends State<City> {
         ],
       ),
       body: Container(
-        child: GridView.count(
-          mainAxisSpacing: 1,
-          crossAxisSpacing: 1,
-          crossAxisCount: 2,
-          children: widget.activities
-              .map((activity) => ActivityCard(
-                    activity: activity,
-                  ))
-              .toList(),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              height: 200,
+              color: Colors.white,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text('Choisissez une date '),
+                      ),
+                      RaisedButton(
+                        child: Text('Selectionner date'),
+                        onPressed: () {},
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: GridView.count(
+                mainAxisSpacing: 1,
+                crossAxisSpacing: 1,
+                crossAxisCount: 2,
+                children: widget.activities
+                    .map((activity) => ActivityCard(
+                          activity: activity,
+                        ))
+                    .toList(),
+              ),
+            ),
+          ],
         ),
       ),
     );
