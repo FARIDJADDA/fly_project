@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/models/activity.model.dart';
+import '../../models/activity.model.dart';
+import 'widgets/activity_card.dart';
 import '../../datas/data.dart' as data;
 
 class City extends StatefulWidget {
@@ -20,9 +21,15 @@ class _CityState extends State<City> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[],
+        child: GridView.count(
+          mainAxisSpacing: 1,
+          crossAxisSpacing: 1,
+          crossAxisCount: 2,
+          children: widget.activities
+              .map((activity) => ActivityCard(
+                    activity: activity,
+                  ))
+              .toList(),
         ),
       ),
     );

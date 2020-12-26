@@ -26,7 +26,7 @@ List<Activity> activities = [
     city: 'Paris',
   ),
   Activity(
-    image: 'assets/images/activities/louvre.jpg',
+    image: 'assets/images/activities/effeil.jpg',
     name: 'Tour Effeil',
     id: 'a5',
     city: 'Paris',
