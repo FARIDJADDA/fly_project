@@ -5,5 +5,6 @@ class Trip {
   Trip({
     this.city,
     this.activities,
+    this.date,
   });
 }
