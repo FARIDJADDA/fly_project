@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/views/city/widgets/trip_overview.dart';
-import '../../models/trip.model.dart';
+import 'package:fly_project/views/city/widgets/trip_activity_list.dart';
 
+import '../../models/trip.model.dart';
 import '../../models/activity.model.dart';
-import 'widgets/activity_card.dart';
+
+import './widgets/activity_list.dart';
+import './widgets/trip_overview.dart';
+
 import '../../datas/data.dart' as data;
 
 class City extends StatefulWidget {
@@ -14,6 +17,7 @@ class City extends StatefulWidget {
 
 class _CityState extends State<City> {
   Trip myTrip = Trip(activities: [], city: 'Paris', date: DateTime.now());
+  int index = 0;
 
   void setDate() {
     showDatePicker(
@@ -30,12 +34,17 @@ class _CityState extends State<City> {
     });
   }
 
+  void switchIndex(newIndex) {
+    setState(() {
+      index = newIndex;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[400],
       appBar: AppBar(
-        backgroundColor: Colors.green[400],
+        backgroundColor: Colors.black,
         leading: Icon(Icons.chevron_left),
         title: Text('Organise ton voygae'),
         actions: <Widget>[
@@ -50,19 +59,26 @@ class _CityState extends State<City> {
               setDate: setDate,
             ),
             Expanded(
-              child: GridView.count(
-                mainAxisSpacing: 1,
-                crossAxisSpacing: 1,
-                crossAxisCount: 2,
-                children: widget.activities
-                    .map((activity) => ActivityCard(
-                          activity: activity,
-                        ))
-                    .toList(),
-              ),
+              child: index == 0
+                  ? ActivityList(activities: widget.activities)
+                  : TripActtripList(),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            title: Text('Découverte'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.stars),
+            title: Text('Mes activitées'),
+          )
+        ],
+        onTap: switchIndex,
       ),
     );
   }
