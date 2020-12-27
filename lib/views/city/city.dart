@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/models/trip.model.dart';
-import 'package:intl/intl.dart';
+import 'package:fly_project/views/city/widgets/trip_overview.dart';
+import '../../models/trip.model.dart';
+
 import '../../models/activity.model.dart';
 import 'widgets/activity_card.dart';
 import '../../datas/data.dart' as data;
@@ -32,9 +33,11 @@ class _CityState extends State<City> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green[400],
       appBar: AppBar(
+        backgroundColor: Colors.green[400],
         leading: Icon(Icons.chevron_left),
-        title: Text('Paris'),
+        title: Text('Organise ton voygae'),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
@@ -42,27 +45,9 @@ class _CityState extends State<City> {
       body: Container(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 200,
-              color: Colors.white,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          DateFormat("d/M/y ").format(myTrip.date),
-                        ),
-                      ),
-                      RaisedButton(
-                        child: Text('Selectionner date'),
-                        onPressed: setDate,
-                      )
-                    ],
-                  )
-                ],
-              ),
+            TripOverview(
+              trip: myTrip,
+              setDate: setDate,
             ),
             Expanded(
               child: GridView.count(
