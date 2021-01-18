@@ -5,7 +5,7 @@ class TripActtripList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text(
-        'Jes suis là',
+        'Je suis là',
       ),
     );
   }
