@@ -55,7 +55,7 @@ class _CityState extends State<City> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: Icon(Icons.chevron_left),
-        title: Text('Organise ton voygae'),
+        title: Text('Ton voyage de rêve'),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
