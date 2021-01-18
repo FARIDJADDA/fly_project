@@ -11,12 +11,49 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
-      child: Ink.image(
-        image: AssetImage(activity.image),
-        fit: BoxFit.cover,
-        child: InkWell(onTap: toggleActivity),
-      ),
-    );
+        height: 150,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Ink.image(
+              image: AssetImage(
+                activity.image,
+              ),
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: toggleActivity,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        if (isSelected)
+                          Icon(
+                            Icons.check,
+                            size: 40,
+                            color: Colors.white,
+                          ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        activity.name,
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }

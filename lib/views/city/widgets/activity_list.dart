@@ -22,7 +22,7 @@ class ActivityList extends StatelessWidget {
               activity: activity,
               isSelected: selectedActivities.contains(activity.id),
               toggleActivity: () {
-                toggleActivity(Activity().id);
+                toggleActivity(activity.id);
               },
             ),
           )
