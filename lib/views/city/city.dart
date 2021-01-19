@@ -16,8 +16,20 @@ class City extends StatefulWidget {
 }
 
 class _CityState extends State<City> {
-  Trip myTrip = Trip(activities: [], city: 'Paris', date: DateTime.now());
-  int index = 0;
+  Trip myTrip;
+  int index;
+
+  @override
+  void initState() {
+    myTrip = Trip(activities: [], city: 'Paris', date: null);
+    index = 0;
+  }
+
+  List<Activity> get tripActivities {
+    return widget.activities
+        .where((activity) => myTrip.activities.contains(activity.id))
+        .toList();
+  }
 
   void setDate() {
     showDatePicker(
@@ -74,7 +86,9 @@ class _CityState extends State<City> {
                       selectedActivities: myTrip.activities,
                       toggleActivity: toggleActivity,
                     )
-                  : TripActtripList(),
+                  : TripActivityList(
+                      activities: tripActivities,
+                    ),
             ),
           ],
         ),

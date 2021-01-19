@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:fly_project/models/activity.model.dart';
 
-class TripActtripList extends StatelessWidget {
+class TripActivityList extends StatelessWidget {
+  final List<Activity> activities;
+
+  TripActivityList({this.activities});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(
-        'Je suis là',
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          var activity = activities[index];
+          return Card(
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(activity.image),
+              ),
+              title: Text(activity.name),
+              subtitle: Text(activity.city),
+              trailing: Icon(Icons.delete),
+            ),
+          );
+        },
+        itemCount: activities.length,
       ),
     );
   }
