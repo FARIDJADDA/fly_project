@@ -3,8 +3,9 @@ import 'package:fly_project/models/activity.model.dart';
 
 class TripActivityList extends StatelessWidget {
   final List<Activity> activities;
+  final Function deleteTripActivity;
 
-  TripActivityList({this.activities});
+  TripActivityList({this.activities, this.deleteTripActivity});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,15 @@ class TripActivityList extends StatelessWidget {
               ),
               title: Text(activity.name),
               subtitle: Text(activity.city),
-              trailing: Icon(Icons.delete),
+              trailing: IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  deleteTripActivity(activity.id);
+                },
+              ),
             ),
           );
         },
