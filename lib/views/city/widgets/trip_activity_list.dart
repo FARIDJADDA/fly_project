@@ -23,7 +23,7 @@ class TripActivityList extends StatelessWidget {
               trailing: IconButton(
                 icon: Icon(
                   Icons.delete,
-                  color: Colors.red,
+                  color: Colors.teal,
                 ),
                 onPressed: () {
                   deleteTripActivity(activity.id);

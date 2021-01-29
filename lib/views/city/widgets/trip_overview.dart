@@ -44,7 +44,7 @@ class TripOverview extends StatelessWidget {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black, // background
+                  primary: Colors.teal, // background
                   // onPrimary: Colors.red, // foreground
                 ),
                 child: Text('Selectionner date'),

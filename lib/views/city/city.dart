@@ -37,6 +37,19 @@ class _CityState extends State<City> {
       initialDate: DateTime.now().add(Duration(days: 1)),
       firstDate: DateTime.now(),
       lastDate: DateTime(2022),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.teal,
+              primaryColorDark: Colors.teal,
+              accentColor: Colors.teal,
+            ),
+            dialogBackgroundColor: Colors.white,
+          ),
+          child: child,
+        );
+      },
     ).then((newDate) {
       if (newDate != null) {
         setState(() {
@@ -71,7 +84,7 @@ class _CityState extends State<City> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.teal,
         leading: Icon(Icons.chevron_left),
         title: Text('Ton voyage de rêve'),
         actions: <Widget>[
