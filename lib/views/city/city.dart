@@ -27,14 +27,15 @@ class City extends StatefulWidget {
   _CityState createState() => _CityState();
 }
 
-class _CityState extends State<City> {
+class _CityState extends State<City> with WidgetsBindingObserver {
   Trip myTrip;
   int index;
   List<Activity> activities;
 
   @override
-  // ignore: must_call_super
   void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
     myTrip = Trip(activities: [], city: 'Paris', date: null);
     index = 0;
   }
@@ -49,6 +50,18 @@ class _CityState extends State<City> {
     return activities
         .where((activity) => myTrip.activities.contains(activity.id))
         .toList();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print(state);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
   }
 
   void setDate() {
