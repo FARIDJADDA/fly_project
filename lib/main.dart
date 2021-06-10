@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/views/city/city.dart';
+import 'views/city/city.dart';
+import './widgets/data.dart';
 
 //import 'views/home/home.dart';
 
@@ -14,7 +15,9 @@ class LeFaTrip extends StatelessWidget {
       debugShowCheckedModeBanner:
           false, // enleve la banière debug en haut à droite de l'ecran
       //home: Home(),
-      home: City(),
+      home: Data(
+        child: City(),
+      ),
     );
   }
 }

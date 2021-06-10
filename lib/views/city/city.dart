@@ -3,14 +3,12 @@ import 'package:fly_project/views/city/widgets/trip_activity_list.dart';
 
 import '../../models/trip.model.dart';
 import '../../models/activity.model.dart';
+import '../../widgets/data.dart';
 
 import './widgets/activity_list.dart';
 import './widgets/trip_overview.dart';
 
-import '../../datas/data.dart' as data;
-
 class City extends StatefulWidget {
-  final List<Activity> activities = data.activities;
   @override
   _CityState createState() => _CityState();
 }
@@ -18,6 +16,7 @@ class City extends StatefulWidget {
 class _CityState extends State<City> {
   Trip myTrip;
   int index;
+  List<Activity> activities;
 
   @override
   // ignore: must_call_super
@@ -26,8 +25,14 @@ class _CityState extends State<City> {
     index = 0;
   }
 
+  @override
+  didChangeDependencies() {
+    super.didChangeDependencies();
+    activities = Data.of(context).activities;
+  }
+
   List<Activity> get tripActivities {
-    return widget.activities
+    return activities
         .where((activity) => myTrip.activities.contains(activity.id))
         .toList();
   }
@@ -102,7 +107,7 @@ class _CityState extends State<City> {
             Expanded(
               child: index == 0
                   ? ActivityList(
-                      activities: widget.activities,
+                      activities: activities,
                       // si c'est séléctionné
                       selectedActivities: myTrip.activities,
                       // methode de selection
