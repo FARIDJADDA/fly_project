@@ -20,6 +20,7 @@ class _CityState extends State<City> {
   int index;
 
   @override
+  // ignore: must_call_super
   void initState() {
     myTrip = Trip(activities: [], city: 'Paris', date: null);
     index = 0;
@@ -102,7 +103,9 @@ class _CityState extends State<City> {
               child: index == 0
                   ? ActivityList(
                       activities: widget.activities,
+                      // si c'est séléctionné
                       selectedActivities: myTrip.activities,
+                      // methode de selection
                       toggleActivity: toggleActivity,
                     )
                   : TripActivityList(
@@ -118,11 +121,11 @@ class _CityState extends State<City> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            title: Text('Découverte'),
+            label: 'Découverte',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.stars),
-            title: Text('Mes activitées'),
+            label: 'Mes activitées',
           )
         ],
         onTap: switchIndex,
