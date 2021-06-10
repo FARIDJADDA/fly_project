@@ -15,9 +15,15 @@ class TripOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var orientation = MediaQuery.of(context).orientation;
+    var size = MediaQuery.of(context).size;
+
     return Container(
       padding: EdgeInsets.all(10),
       height: 200,
+      width: orientation == Orientation.landscape
+          ? size.width * 0.5
+          : size.width, //double.infinity,
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

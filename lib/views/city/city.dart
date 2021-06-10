@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/views/city/widgets/trip_activity_list.dart';
 
 import '../../models/trip.model.dart';
 import '../../models/activity.model.dart';
 import '../../widgets/data.dart';
 
+import './widgets/trip_activity_list.dart';
 import './widgets/activity_list.dart';
 import './widgets/trip_overview.dart';
 
 class City extends StatefulWidget {
+  showContext({BuildContext context, List<Widget> children}) {
+    var orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.landscape) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: children,
+      );
+    } else {
+      return Column(
+        children: children,
+      );
+    }
+  }
+
   @override
   _CityState createState() => _CityState();
 }
@@ -98,8 +112,9 @@ class _CityState extends State<City> {
         ],
       ),
       body: Container(
-        child: Column(
-          children: [
+        child: widget.showContext(
+          context: context,
+          children: <Widget>[
             TripOverview(
               trip: myTrip,
               setDate: setDate,
