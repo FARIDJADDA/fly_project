@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/activity.model.dart';
+import '../models/activity_model.dart';
 import '../datas/data.dart' as data;
 
 class Data extends InheritedWidget {

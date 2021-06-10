@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../models/trip.model.dart';
-import '../../models/activity.model.dart';
+import '../../models/trip_model.dart';
+import '../../models/activity_model.dart';
 import '../../widgets/data.dart';
 
 import './widgets/trip_activity_list.dart';
 import './widgets/activity_list.dart';
 import './widgets/trip_overview.dart';
 
-class City extends StatefulWidget {
+class CityView extends StatefulWidget {
   showContext({BuildContext context, List<Widget> children}) {
     var orientation = MediaQuery.of(context).orientation;
     if (orientation == Orientation.landscape) {
@@ -24,10 +24,10 @@ class City extends StatefulWidget {
   }
 
   @override
-  _CityState createState() => _CityState();
+  _CityViewState createState() => _CityViewState();
 }
 
-class _CityState extends State<City> with WidgetsBindingObserver {
+class _CityViewState extends State<CityView> with WidgetsBindingObserver {
   Trip myTrip;
   int index;
   List<Activity> activities;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/models/activity.model.dart';
+import 'package:fly_project/models/activity_model.dart';
 import 'package:fly_project/views/city/widgets/trip_activity_card.dart';
 
 class TripActivityList extends StatelessWidget {

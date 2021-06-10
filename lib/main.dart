@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'views/city/city.dart';
-import './widgets/data.dart';
+// import 'views/city/city.dart';
+// import './widgets/data.dart';
 
-//import 'views/home/home.dart';
+import 'views/home/home_view.dart';
 
-main(List<String> args) {
-  runApp(LeFaTrip());
-}
+// main(List<String> args) {
+//   runApp(LeFaTrip());
+// }
+void main() => runApp(LeFaTrip());
 
 class LeFaTrip extends StatelessWidget {
   @override
@@ -29,10 +30,7 @@ class LeFaTrip extends StatelessWidget {
 
       debugShowCheckedModeBanner:
           false, // enleve la banière debug en haut à droite de l'ecran
-      //home: Home(),
-      home: Data(
-        child: City(),
-      ),
+      home: HomeView(),
     );
   }
 }
