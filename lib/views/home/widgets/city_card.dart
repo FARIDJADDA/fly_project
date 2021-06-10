@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../../models/city_model.dart';
 
 class CityCard extends StatelessWidget {
-  final String name;
-  final String image;
-  final bool checked;
-  final Function updateChecked;
+  final City city;
 
-  CityCard({this.name, this.image, this.checked, this.updateChecked});
+  CityCard({this.city});
 
   @override
   Widget build(BuildContext context) {
@@ -19,38 +17,29 @@ class CityCard extends StatelessWidget {
           children: [
             Ink.image(
               fit: BoxFit.cover,
-              image: AssetImage(image),
+              image: AssetImage(city.image),
               child: InkWell(
-                onTap: updateChecked,
+                onTap: () {},
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Expanded(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        checked ? Icons.star : Icons.star_border,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                    ],
-                  )),
-                  Row(
-                    children: [
-                      Text(
-                        name,
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      )
-                    ],
-                  )
-                ],
+            Positioned(
+              top: 10,
+              left: 10,
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 5,
+                ),
+                color: Colors.black54,
+                child: Text(
+                  city.name,
+                  style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

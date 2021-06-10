@@ -1,7 +1,7 @@
 // import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:fly_project/models/activity.model.dart';
+import 'package:fly_project/models/activity_model.dart';
 
 class TripActivityCard extends StatefulWidget {
   final Activity activity;

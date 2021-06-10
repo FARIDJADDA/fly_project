@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:fly_project/views/city/widgets/trip_activity_list.dart';
 
-import '../../models/trip.model.dart';
-import '../../models/activity.model.dart';
+import '../../models/trip_model.dart';
+import '../../models/activity_model.dart';
 import '../../widgets/data.dart';
 
+import './widgets/trip_activity_list.dart';
 import './widgets/activity_list.dart';
 import './widgets/trip_overview.dart';
 
-class City extends StatefulWidget {
+class CityView extends StatefulWidget {
+  showContext({BuildContext context, List<Widget> children}) {
+    var orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.landscape) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: children,
+      );
+    } else {
+      return Column(
+        children: children,
+      );
+    }
+  }
+
   @override
-  _CityState createState() => _CityState();
+  _CityViewState createState() => _CityViewState();
 }
 
-class _CityState extends State<City> {
+class _CityViewState extends State<CityView> with WidgetsBindingObserver {
   Trip myTrip;
   int index;
   List<Activity> activities;
 
   @override
-  // ignore: must_call_super
   void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
     myTrip = Trip(activities: [], city: 'Paris', date: null);
     index = 0;
   }
@@ -35,6 +50,18 @@ class _CityState extends State<City> {
     return activities
         .where((activity) => myTrip.activities.contains(activity.id))
         .toList();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print(state);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
   }
 
   void setDate() {
@@ -98,8 +125,9 @@ class _CityState extends State<City> {
         ],
       ),
       body: Container(
-        child: Column(
-          children: [
+        child: widget.showContext(
+          context: context,
+          children: <Widget>[
             TripOverview(
               trip: myTrip,
               setDate: setDate,
